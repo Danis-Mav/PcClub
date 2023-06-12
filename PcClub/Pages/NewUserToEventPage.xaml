@@ -19,18 +19,18 @@
             <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold" Margin="0,20">Add Users to Event</TextBlock>
 
             <!-- Поля для ввода данных -->
-            <Label Content="Select User:" Margin="10" />
-            <ComboBox x:Name="cmbUsers" Margin="10" />
+                <Label Content="Выбор пользователя:" FontSize="20" />
+                <ComboBox x:Name="cmbUsers" Margin="10" FontSize="20" />
         </StackPanel>
         
 
         <!-- Кнопки для добавления и удаления пользователей -->
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
-            <Button Content="Add User" Width="100" Margin="10" Click="AddUser_Click" />
-            <Button Content="Remove User" Width="100" Margin="10" Click="RemoveUser_Click" />
+                <Button Content="Добавить пользователя"  Margin="10" Click="AddUser_Click" FontSize="20"/>
+                <Button Content="Удалить пользователя"  Margin="10" Click="RemoveUser_Click" FontSize="20"/>
         </StackPanel>
         <StackPanel Margin="10">
-            <ListBox x:Name="lstEventUsers" Margin="10" />
+                <ListBox x:Name="lstEventUsers" FontSize="20" />
         </StackPanel>
         </StackPanel>
 

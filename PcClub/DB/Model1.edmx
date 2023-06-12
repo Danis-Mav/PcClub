@@ -74,7 +74,7 @@
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Passport" Type="nchar" MaxLength="10" />
         </EntityType>
-        <Association Name="FK_Booking_Place">
+        <Association Name="FK_Booking_Place1">
           <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
           <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
           <ReferentialConstraint>
@@ -142,7 +142,7 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Booking_Place" Association="Self.FK_Booking_Place">
+          <AssociationSet Name="FK_Booking_Place1" Association="Self.FK_Booking_Place1">
             <End Role="Place" EntitySet="Place" />
             <End Role="Booking" EntitySet="Booking" />
           </AssociationSet>
@@ -179,7 +179,7 @@
           <Property Name="DateTimeStart" Type="DateTime" Precision="3" />
           <Property Name="DateTimeEnd" Type="DateTime" Precision="3" />
           <Property Name="IsDelete" Type="Boolean" />
-          <NavigationProperty Name="Place" Relationship="Self.FK_Booking_Place" FromRole="Booking" ToRole="Place" />
+          <NavigationProperty Name="Place" Relationship="Self.FK_Booking_Place1" FromRole="Booking" ToRole="Place" />
           <NavigationProperty Name="User" Relationship="Self.FK_Booking_User" FromRole="Booking" ToRole="User" />
         </EntityType>
         <EntityType Name="Event">
@@ -212,7 +212,7 @@
           <Property Name="IdType" Type="Int32" />
           <Property Name="IsBooking" Type="Boolean" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="Booking" Relationship="Self.FK_Booking_Place" FromRole="Place" ToRole="Booking" />
+          <NavigationProperty Name="Booking" Relationship="Self.FK_Booking_Place1" FromRole="Place" ToRole="Booking" />
           <NavigationProperty Name="Type" Relationship="Self.FK_Place_Type1" FromRole="Place" ToRole="Type" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -247,7 +247,7 @@
           <NavigationProperty Name="Booking" Relationship="Self.FK_Booking_User" FromRole="User" ToRole="Booking" />
           <NavigationProperty Name="EventUser" Relationship="Self.FK_EventUser_User" FromRole="User" ToRole="EventUser" />
         </EntityType>
-        <Association Name="FK_Booking_Place">
+        <Association Name="FK_Booking_Place1">
           <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
           <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
           <ReferentialConstraint>
@@ -315,7 +315,7 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Type" EntityType="Self.Type" />
           <EntitySet Name="User" EntityType="Self.User" />
-          <AssociationSet Name="FK_Booking_Place" Association="Self.FK_Booking_Place">
+          <AssociationSet Name="FK_Booking_Place1" Association="Self.FK_Booking_Place1">
             <End Role="Place" EntitySet="Place" />
             <End Role="Booking" EntitySet="Booking" />
           </AssociationSet>

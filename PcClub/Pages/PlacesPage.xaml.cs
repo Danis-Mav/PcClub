@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,12 +22,15 @@ namespace PcClub.Pages
     /// </summary>
     public partial class PlacesPage : Page
     {
+        public static ObservableCollection<Place> places { get; set; }
         private Place selectedPlace;
         
         public PlacesPage()
         {
+            
             InitializeComponent();
             LoadPlaces();
+
         }
         private void lvPlaces_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -37,9 +41,8 @@ namespace PcClub.Pages
         {
             using (var db = new PcClubEntities())
             {
-                List<Place> places = db.Place.Where(p => p.IsDeleted != true).ToList();
-                lvPlaces.ItemsSource = places;
-                DataContext = this;
+                places = new ObservableCollection<Place>(DBConnection.connection.Place.Where(p => p.IsDeleted != true).ToList());
+                this.DataContext = this;
             }
         }
 

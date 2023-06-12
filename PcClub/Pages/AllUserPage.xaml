@@ -16,9 +16,9 @@
 
 
         <StackPanel Orientation="Horizontal">
-            <Label Content="Поиск по Email или ФИО"/>
-            <TextBox x:Name="txtSearch" Margin="5" Width="300"/>
-            <Button Content="Добавить нового пользователя" Click="btnAddUser_Click" />
+            <Label Content="Поиск по Email или ФИО" FontSize="20"/>
+            <TextBox x:Name="txtSearch" Margin="5" Width="300" FontSize="20"/>
+            <Button Content="Добавить нового пользователя" Click="btnAddUser_Click" FontSize="15"  />
         </StackPanel>
 
         <ListView x:Name="lvUsers" Grid.Row="1" Margin="5" ItemsSource="{Binding Users}" MouseDoubleClick="userListView_MouseDoubleClick">
@@ -27,7 +27,7 @@
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" />
                     <GridViewColumn Header="ФИО" Width="200" DisplayMemberBinding="{Binding FullName}" />
                     <GridViewColumn Header="Номер" Width="100" DisplayMemberBinding="{Binding PhoneNumber}" />
-                    <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}" />
+                    <GridViewColumn Header="Email" Width="100" DisplayMemberBinding="{Binding Email}" />
                     <GridViewColumn Header="Паспортные данные" DisplayMemberBinding="{Binding Passport}" />
                 </GridView>
             </ListView.View>

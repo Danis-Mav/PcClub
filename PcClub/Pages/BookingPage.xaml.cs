@@ -72,7 +72,7 @@ namespace PcClub.Pages
             }
 
             DateTime startDate = DateTime.Now;
-            DateTime endDate = startDate.AddHours(hours);
+            DateTime endDate = startDate.AddMinutes(hours);
             bookingEndTime = endDate;
 
             using (var db = new PcClubEntities())

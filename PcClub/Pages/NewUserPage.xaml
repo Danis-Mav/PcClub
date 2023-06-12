@@ -19,23 +19,23 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <StackPanel Margin="30">
-            <Label Grid.Row="0" Content="ФИО" />
-            <TextBox Grid.Row="1" x:Name="txtFullName" PreviewTextInput="txtInput_LettersOnly"/>
+            <Label Grid.Row="0" Content="ФИО" FontSize="20" />
+            <TextBox Grid.Row="1" x:Name="txtFullName" PreviewTextInput="txtInput_LettersOnly" FontSize="20"/>
 
-            <Label Grid.Row="2" Content="Номер телефона" />
+            <Label Grid.Row="2" Content="Номер телефона" FontSize="20" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                <Label Grid.Row="2" Content="+7" />
-                <TextBox Grid.Row="3" x:Name="txtNumber" PreviewTextInput="txtInput_NumbersOnly" Width="200"/>
+                <Label Grid.Row="2" Content="+7" FontSize="20" />
+                <TextBox Grid.Row="3" x:Name="txtNumber" PreviewTextInput="txtInput_NumbersOnly" Width="200" FontSize="20"/>
             </StackPanel>
 
-            <Label Grid.Row="4" Content="Email" />
-            <TextBox Grid.Row="5" x:Name="txtEmail"/>
+            <Label Grid.Row="4" Content="Email" FontSize="20" />
+            <TextBox Grid.Row="5" x:Name="txtEmail" FontSize="20"/>
 
-            <Label Grid.Row="6" Content="Паспортные данные" />
-            <TextBox Grid.Row="7" x:Name="txtPassportData" PreviewTextInput="txtInput_NumbersOnly"/>
+            <Label Grid.Row="6" Content="Паспортные данные" FontSize="20" />
+            <TextBox Grid.Row="7" x:Name="txtPassportData" FontSize="20" PreviewTextInput="txtInput_NumbersOnly"/>
         </StackPanel>
-        
 
-        <Button Grid.Row="8" Margin="20" Content="Добавить" Click="AddUser_Click" />
+
+        <Button Grid.Row="8" Margin="20" Content="Добавить" Click="AddUser_Click" FontSize="20" />
     </Grid>
 </Page>

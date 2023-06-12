@@ -15,25 +15,26 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Margin="10">
-            <TextBlock Text="Full Name:" FontWeight="Bold" />
-            <TextBlock x:Name="lblFullName" Margin="0,5,0,10" />
+            <TextBlock FontSize="20" Text="Полное имя:" FontWeight="Bold" />
+            <TextBlock FontSize="20" x:Name="lblFullName" Margin="0,5,0,10" />
 
-            <TextBlock Text="Email:" FontWeight="Bold" />
-            <TextBlock x:Name="lblEmail" Margin="0,5,0,10" />
+            <TextBlock FontSize="20" Text="Email:" FontWeight="Bold" />
+            <TextBlock FontSize="20" x:Name="lblEmail" Margin="0,5,0,10" />
 
-            <TextBlock Text="Phone Number:" FontWeight="Bold" />
-            <TextBlock x:Name="lblPhoneNumber" Margin="0,5,0,10" />
+            <TextBlock FontSize="20" Text="Номер телефона:" FontWeight="Bold" />
+            <TextBlock FontSize="20" x:Name="lblPhoneNumber" Margin="0,5,0,10" />
 
-            <TextBlock Text="Passport Data:" FontWeight="Bold" />
-            <TextBlock x:Name="lblPassport" Margin="0,5,0,10" />
+            <TextBlock FontSize="20" Text="Паспортные данные:" FontWeight="Bold" />
+            <TextBlock FontSize="20" x:Name="lblPassport" Margin="0,5,0,10" />
         </StackPanel>
 
-        <ListView Grid.Row="1" x:Name="lvBookingHistory" Margin="10">
+        <ListView Grid.Row="1" x:Name="lvBookingHistory" Margin="10" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Place" DisplayMemberBinding="{Binding Place.Name}" />
-                    <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}" />
-                    <GridViewColumn Header="Hours" DisplayMemberBinding="{Binding Hours}" />
+                    <GridViewColumn Header="Место" Width="100" DisplayMemberBinding="{Binding Place.Name}" />
+                    <GridViewColumn Header="Время начала бронирования" Width="200" DisplayMemberBinding="{Binding DateTimeStart}" />
+                    <GridViewColumn Header="Конец бронирования" Width="200"  DisplayMemberBinding="{Binding DateTimeEnd}" />
+                    <GridViewColumn Header="Часы" DisplayMemberBinding="{Binding Hour}" />
                 </GridView>
             </ListView.View>
         </ListView>

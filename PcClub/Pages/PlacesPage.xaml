@@ -9,20 +9,20 @@
       Title="PlacesPage">
 
     <Grid>
-        <ListView x:Name="lvPlaces" Margin="10">
+        <ListView x:Name="lvPlaces" ItemsSource="{Binding places}" Margin="10" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="50"/>
                     <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Name}" Width="150"/>
-                    <GridViewColumn Header="Тип" DisplayMemberBinding="{Binding IdType.Type.Name}" Width="150"/>
-                    <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price}" Width="100"/>
+                    <GridViewColumn Header="Тип" DisplayMemberBinding="{Binding Type.Name}" Width="150"/>
+                    <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Type.Price}" Width="100"/>
                 </GridView>
             </ListView.View>
         </ListView>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="10">
-            <Button Content="Добавить" Click="AddPlace_Click" Margin="0,0,10,0"/>
-            <Button Content="Редактировать" Click="EditPlace_Click" Margin="0,0,10,0"/>
-            <Button Content="Удалить" Click="DeletePlace_Click"/>
+            <Button   Height="50" Width="200" Content="Добавить" Click="AddPlace_Click" Margin="0,0,10,0"/>
+            <Button  Height="50" Width="200" Content="Редактировать" Click="EditPlace_Click" Margin="0,0,10,0"/>
+            <Button  Height="50" Width="200" Content="Удалить" Click="DeletePlace_Click"/>
         </StackPanel>
     </Grid>
 </Page>

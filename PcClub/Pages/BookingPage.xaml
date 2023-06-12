@@ -19,21 +19,21 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0">
-            <TextBlock Text="Выберите место:"/>
-            <ComboBox x:Name="cmbPlace" SelectionChanged="cmbPlace_SelectionChanged"/>
+            <TextBlock Text="Выберите место:" FontSize="20"/>
+            <ComboBox x:Name="cmbPlace" FontSize="20" SelectionChanged="cmbPlace_SelectionChanged"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1">
-            <TextBlock Text="Выберите пользователя:"/>
-            <ComboBox x:Name="cmbUser" SelectionChanged="cmbUser_SelectionChanged"/>
+            <TextBlock FontSize="20" Text="Выберите пользователя:"/>
+            <ComboBox FontSize="20" x:Name="cmbUser" SelectionChanged="cmbUser_SelectionChanged"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2">
-            <TextBlock Text="Введите количество часов:"/>
-            <TextBox x:Name="txtHours"/>
+            <TextBlock FontSize="20" Text="Введите количество часов:"/>
+            <TextBox FontSize="20" x:Name="txtHours"/>
         </StackPanel>
 
-        <Button x:Name="btnBook" Content="Забронировать" Click="btnBook_Click" Grid.Row="3"/>
+        <Button x:Name="btnBook" Margin="20" FontSize="20" Content="Забронировать" Click="btnBook_Click" Grid.Row="3"/>
 
         <TextBlock x:Name="txtStatus" Grid.Row="4"/>
 
