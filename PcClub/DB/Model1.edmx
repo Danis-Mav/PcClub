@@ -26,6 +26,7 @@
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="Date" Type="date" />
           <Property Name="MaxUser" Type="int" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="EventUser">
           <Key>
@@ -191,6 +192,7 @@
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="MaxUser" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="EventUser" Relationship="Self.FK_EventUser_Event" FromRole="Event" ToRole="EventUser" />
         </EntityType>
         <EntityType Name="EventUser">
@@ -363,6 +365,7 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="MaxUser" ColumnName="MaxUser" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

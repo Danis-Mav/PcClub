@@ -19,6 +19,7 @@
             <Button Content="Места" FontSize="20" Height="50" Click="PlacesButton_Click"/>
             <Button Content="Пользователи" FontSize="20" Height="50" Click="AllUserButton_Click"/>
             <Button Content="События" FontSize="20" Height="50"     Click="Button_Click"/>
+            <Button Content="Статистика и отчеты" FontSize="20" Height="50" Click="Button1_Click"/>
         </StackPanel>
 
         <Frame x:Name="MainFrame"  Grid.Column="1" NavigationUIVisibility="Hidden"/>

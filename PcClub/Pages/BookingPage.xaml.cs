@@ -39,12 +39,12 @@ namespace PcClub.Pages
         {
             using (var db = new PcClubEntities())
             {
-                users = db.User.ToList();
+                var users = db.User.Where(u => !db.Booking.Any(booking => booking.IdUser == u.Id && booking.IsDelete != true)).ToList();
                 cmbUser.ItemsSource = users;
                 cmbUser.DisplayMemberPath = "FullName";
                 cmbUser.SelectedValuePath = "Id";
 
-                var places = db.Place.ToList();
+                var places = db.Place.Where(p => p.IsBooking != true).ToList();
                 cmbPlace.ItemsSource = places;
                 cmbPlace.DisplayMemberPath = "Name";
                 cmbPlace.SelectedValuePath = "Id";
@@ -78,11 +78,7 @@ namespace PcClub.Pages
             using (var db = new PcClubEntities())
             {
                 // Проверить, свободно ли место на выбранный период времени
-                bool isPlaceAvailable = !db.Booking.Any(b =>
-                    b.IdPlace == selectedPlace.Id &&
-                    ((startDate >= b.DateTimeStart && startDate < b.DateTimeEnd) ||
-                    (endDate > b.DateTimeStart && endDate <= b.DateTimeEnd) ||
-                    (startDate <= b.DateTimeStart && endDate >= b.DateTimeEnd)));
+                bool isPlaceAvailable = !db.Booking.Any(b => b.IdPlace == selectedPlace.Id && ((startDate >= b.DateTimeStart && startDate < b.DateTimeEnd) || (endDate > b.DateTimeStart && endDate <= b.DateTimeEnd) || (startDate <= b.DateTimeStart && endDate >= b.DateTimeEnd)));
 
                 if (!isPlaceAvailable)
                 {
@@ -97,11 +93,12 @@ namespace PcClub.Pages
                     IdPlace = selectedPlace.Id,
                     IdUser = selectedUser.Id
                 };
-
+                selectedPlace.IsBooking = true; 
                 db.Booking.Add(newBooking);
                 db.SaveChanges();
 
                 MessageBox.Show("Бронирование успешно создано.", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
+                LoadData();
                 CheckBookingStatus();
             }
         }

@@ -36,6 +36,7 @@
             <Button Content="Добавить событие" FontSize="20" Margin="10" Click="AddEvent_Click" />
             <Button Content="Добавить пользователей" FontSize="20" Margin="10" Click="AddUsers_Click" />
             <Button Content="Отправить EMAIL" FontSize="20" Margin="10" Click="SendEmail_Click" />
+            <Button Content="Удалить" Click="DeleteEvent_Click" />
         </StackPanel>
     </Grid>
 </Page>

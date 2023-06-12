@@ -26,6 +26,7 @@ namespace PcClub.Pages
     {
         public Event SelectedEvent { get; set; }
         public List<Event> Events { get; set; }
+        DateTime currentDate = DateTime.Now;
 
         public EventPage()
         {
@@ -38,8 +39,9 @@ namespace PcClub.Pages
         {
             using (var db = new PcClubEntities())
             {
-                Events = db.Event.ToList();
-            }
+                Events = db.Event.Where(e => e.IsDeleted != true).ToList();
+                DataContext = this;
+            }   
         }
 
         private void AddEvent_Click(object sender, RoutedEventArgs e)
@@ -54,6 +56,37 @@ namespace PcClub.Pages
         {
             NavigationService.Navigate(new NewUserToEventPage(SelectedEvent));
         }
+        private void DeleteEvent_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectedEvent != null)
+            {
+                MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите удалить событие?", "Удаление события", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    using (var db = new PcClubEntities())
+                    {
+                        // Найти событие в базе данных
+                        Event eventToDelete = db.Event.FirstOrDefault(ev => ev.Id == SelectedEvent.Id);
+                        if (eventToDelete != null)
+                        {
+                            eventToDelete.IsDeleted = true;
+                            db.SaveChanges();
+                            // Очистить выбранное событие
+                            SelectedEvent = null;
+                            // Обновить список событий
+                            LoadEvents();
+                            // Вывести сообщение об успешном удалении
+                            MessageBox.Show("Событие успешно удалено.", "Удаление события", MessageBoxButton.OK, MessageBoxImage.Information);
+                            
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите событие для удаления.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
 
         private void SendEmail_Click(object sender, RoutedEventArgs e)
         {
@@ -67,28 +100,34 @@ namespace PcClub.Pages
                     string fromMail = "pcclubclient@gmail.com";
                     string fromPassword = "kfkwqtfqarsifyjw";
                     string subject = selectedEvent.Name;
-                    string body = selectedEvent.Description;
-
                     foreach (string email in emailList)
                     {
-                        MailMessage message = new MailMessage();
-                        message.From = new MailAddress(fromMail);
-                        message.Subject = subject;
-                        message.To.Add(new MailAddress(email));
-                        message.Body = body;
-                        message.IsBodyHtml = true;
-
-                        var smtpClient = new SmtpClient("smtp.gmail.com")
+                        User user = db.User.FirstOrDefault(u => u.Email == email);
+                        if (user != null)
                         {
-                            Port = 587,
-                            Credentials = new NetworkCredential(fromMail, fromPassword),
-                            EnableSsl = true,
-                        };
+                            string emailBody = $"Привет, {user.FullName}!\n\n";
+                            emailBody += $"{selectedEvent.Name} будет проводиться {(selectedEvent.Date.HasValue ? selectedEvent.Date.Value.ToShortDateString() : "неизвестная дата")}.\n\n{selectedEvent.Description}";
 
-                        smtpClient.Send(message);
+                            MailMessage message = new MailMessage();
+                            message.From = new MailAddress(fromMail);
+                            message.Subject = subject;
+                            message.To.Add(new MailAddress(email));
+                            message.Body = emailBody;
+                            message.IsBodyHtml = true;
+
+                            var smtpClient = new SmtpClient("smtp.gmail.com")
+                            {
+                                Port = 587,
+                                Credentials = new NetworkCredential(fromMail, fromPassword),
+                                EnableSsl = true,
+                            };
+
+                            smtpClient.Send(message);
+                        }
                     }
-                }
 
+                }
+                MessageBox.Show("Сообщения успешно отправлены.", "Отправка сообщений", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {

@@ -98,6 +98,11 @@ namespace PcClub
             EventPage  eventPage = new EventPage();
             MainFrame.Navigate(eventPage);
         }
+        private void NavigateToStatisticsPage()
+        {
+            StatisticsPage statisticsPage = new StatisticsPage();
+            MainFrame.Navigate(statisticsPage);
+        }
 
         private void BookingButton_Click(object sender, RoutedEventArgs e)
         {
@@ -118,6 +123,10 @@ namespace PcClub
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             NavigateToEventPage();
+        }
+        private void Button1_Click(object sender, RoutedEventArgs e)
+        {
+            NavigateToStatisticsPage();
         }
     }
 }
