@@ -1,0 +1,25 @@
+﻿<Window x:Class="PcClub.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PcClub"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Menu" Click="ToggleMenuVisibility" Width="150" Height="50" VerticalAlignment="Top" />
+
+        <StackPanel Margin="0,50"  Grid.Row="2" Width="150"  x:Name="menuPanel" Visibility="Collapsed" Orientation="Vertical">
+            <Button Content="Бронирование мест" Click="BookingButton_Click"/>
+            <Button Content="Места" Click="PlacesButton_Click"/>
+            <Button Content="Пользователи" Click="AllUserButton_Click"/>
+            <Button Content="События" Click="Button_Click"/>
+        </StackPanel>
+
+        <Frame x:Name="MainFrame"  Grid.Column="1" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>

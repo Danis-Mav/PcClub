@@ -1,0 +1,41 @@
+﻿<Page x:Class="PcClub.Pages.UserDetailsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PcClub.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="UserDetailsPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="10">
+            <TextBlock Text="Full Name:" FontWeight="Bold" />
+            <TextBlock x:Name="lblFullName" Margin="0,5,0,10" />
+
+            <TextBlock Text="Email:" FontWeight="Bold" />
+            <TextBlock x:Name="lblEmail" Margin="0,5,0,10" />
+
+            <TextBlock Text="Phone Number:" FontWeight="Bold" />
+            <TextBlock x:Name="lblPhoneNumber" Margin="0,5,0,10" />
+
+            <TextBlock Text="Passport Data:" FontWeight="Bold" />
+            <TextBlock x:Name="lblPassport" Margin="0,5,0,10" />
+        </StackPanel>
+
+        <ListView Grid.Row="1" x:Name="lvBookingHistory" Margin="10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Place" DisplayMemberBinding="{Binding Place.Name}" />
+                    <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}" />
+                    <GridViewColumn Header="Hours" DisplayMemberBinding="{Binding Hours}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page>
