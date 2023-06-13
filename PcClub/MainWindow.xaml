@@ -6,13 +6,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PcClub"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="PcClub" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="pc.jpg" Stretch="UniformToFill" />
+        </Grid.Background>
         <Button Content="Меню" Click="ToggleMenuVisibility" FontSize="20" Width="300" Height="50" VerticalAlignment="Top" />
+        <Frame Grid.Column="1" Background="#9DFFFFFF"/>
 
         <StackPanel Margin="0,50"  Grid.Row="2"  x:Name="menuPanel" Visibility="Collapsed" Orientation="Vertical">
             <Button Content="Бронирование мест" Height="50"  FontSize="20" Click="BookingButton_Click"/>

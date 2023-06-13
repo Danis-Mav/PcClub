@@ -16,7 +16,7 @@
 
 
         <StackPanel Orientation="Horizontal">
-            <Label Content="Поиск по Email или ФИО" FontSize="20"/>
+            <Label Content="Поиск по Email или ФИО" FontSize="40"/>
             <TextBox x:Name="txtSearch" Margin="5" Width="300" FontSize="20"/>
             <Button Content="Добавить нового пользователя" Click="btnAddUser_Click" FontSize="15"  />
         </StackPanel>
@@ -24,10 +24,34 @@
         <ListView x:Name="lvUsers" Grid.Row="1" Margin="5" ItemsSource="{Binding Users}" MouseDoubleClick="userListView_MouseDoubleClick">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ФИО" Width="200" DisplayMemberBinding="{Binding FullName}" />
-                    <GridViewColumn Header="Номер" Width="200" DisplayMemberBinding="{Binding PhoneNumber}" />
-                    <GridViewColumn Header="Email" Width="200" DisplayMemberBinding="{Binding Email}" />
-                    <GridViewColumn Header="Паспортные данные" DisplayMemberBinding="{Binding Passport}" />
+                    <GridViewColumn Header="ФИО" Width="400">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding FullName}" FontSize="18" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Номер" Width="300">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding PhoneNumber}" FontSize="18" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Email" Width="400">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Email}" FontSize="18" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Паспортные данные" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Passport}" FontSize="18" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
