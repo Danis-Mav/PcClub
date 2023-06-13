@@ -22,10 +22,11 @@
         <ListView x:Name="lvEvents" Grid.Row="1" Margin="20" SelectionChanged="lvEvents_SelectionChanged" ItemsSource="{Binding Events}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Width="600">
+                    <StackPanel Width="1000">
                         <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Margin="0,10" />
                         <TextBlock Text="{Binding Date}" HorizontalAlignment="Right" Margin="0,0,20,10" />
                         <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Margin="20" />
+                        <Separator Height="1" Background="Wheat"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -36,7 +37,7 @@
             <Button Content="Добавить событие" FontSize="20" Margin="10" Click="AddEvent_Click" />
             <Button Content="Добавить пользователей" FontSize="20" Margin="10" Click="AddUsers_Click" />
             <Button Content="Отправить EMAIL" FontSize="20" Margin="10" Click="SendEmail_Click" />
-            <Button Content="Удалить" Click="DeleteEvent_Click" />
+            <Button Content="Удалить" FontSize="20" Margin="10" Click="DeleteEvent_Click" />
         </StackPanel>
     </Grid>
 </Page>

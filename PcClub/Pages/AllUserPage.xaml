@@ -24,10 +24,9 @@
         <ListView x:Name="lvUsers" Grid.Row="1" Margin="5" ItemsSource="{Binding Users}" MouseDoubleClick="userListView_MouseDoubleClick">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" />
                     <GridViewColumn Header="ФИО" Width="200" DisplayMemberBinding="{Binding FullName}" />
-                    <GridViewColumn Header="Номер" Width="100" DisplayMemberBinding="{Binding PhoneNumber}" />
-                    <GridViewColumn Header="Email" Width="100" DisplayMemberBinding="{Binding Email}" />
+                    <GridViewColumn Header="Номер" Width="200" DisplayMemberBinding="{Binding PhoneNumber}" />
+                    <GridViewColumn Header="Email" Width="200" DisplayMemberBinding="{Binding Email}" />
                     <GridViewColumn Header="Паспортные данные" DisplayMemberBinding="{Binding Passport}" />
                 </GridView>
             </ListView.View>

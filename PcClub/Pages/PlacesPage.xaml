@@ -9,11 +9,10 @@
       Title="PlacesPage">
 
     <Grid>
-        <ListView x:Name="lvPlaces" ItemsSource="{Binding places}" Margin="10" >
+        <ListView x:Name="lvPlaces" SelectionChanged="lvPlaces_SelectionChanged"  ItemsSource="{Binding places}" Margin="10" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="50"/>
-                    <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Name}" Width="150"/>
+                    <GridViewColumn Header="Номер места" DisplayMemberBinding="{Binding Name}" Width="150"/>
                     <GridViewColumn Header="Тип" DisplayMemberBinding="{Binding Type.Name}" Width="150"/>
                     <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Type.Price}" Width="100"/>
                 </GridView>
