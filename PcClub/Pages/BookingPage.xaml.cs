@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,15 +25,20 @@ namespace PcClub.Pages
     public partial class BookingPage : Page
     {
         private Place selectedPlace;
+       
         private User selectedUser;
         private DateTime bookingEndTime;
         public virtual ICollection<Booking> Bookings { get; set; }
         public virtual ICollection<Place> Places { get; set; }
+        public ObservableCollection<Place> Table { get; set; }
 
         public BookingPage()
         {
             InitializeComponent();
             LoadData();
+            ShowTable();
+            cmbPlace.SelectionChanged += cmbPlace_SelectionChanged;
+            LViewTable.SelectionChanged += LViewTable_SelectionChanged;
         }
 
         private void LoadData()
@@ -49,6 +56,21 @@ namespace PcClub.Pages
                 cmbPlace.SelectedValuePath = "Id";
             }
         }
+        private void ShowTable()
+        {
+
+            Table = new ObservableCollection<Place>(DBConnection.connection.Place.Where(x => x.IsDeleted != true).ToList());
+            DataContext = this;
+            LViewTable.ItemsSource = Table;
+            LViewTable.ItemContainerGenerator.StatusChanged += ItemContainerGenerator_StatusChanged;
+        }
+        private void ItemContainerGenerator_StatusChanged(object sender, EventArgs e)
+        {
+           
+        }
+       
+
+       
 
         private void btnBook_Click(object sender, RoutedEventArgs e)
         {
@@ -115,8 +137,22 @@ namespace PcClub.Pages
 
         private void cmbPlace_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            LViewTable.SelectedItem = selectedPlace;
             selectedPlace = cmbPlace.SelectedItem as Place;
             CheckBookingStatus();
+
+            // Выбор соответствующего элемента в ListView
+            
+        }
+
+        private void LViewTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedPlace = LViewTable.SelectedItem as Place;
+            cmbPlace.SelectedItem = selectedPlace;
+            CheckBookingStatus();
+
+            // Выбор соответствующего элемента в ComboBox
+            
         }
 
         private void cmbUser_SelectionChanged(object sender, SelectionChangedEventArgs e)

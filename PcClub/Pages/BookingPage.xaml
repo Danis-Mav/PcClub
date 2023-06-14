@@ -36,7 +36,31 @@
 
         <Button x:Name="btnBook" Margin="20" FontSize="20" Content="Забронировать" Click="btnBook_Click" Grid.Row="3"/>
 
-        <TextBlock x:Name="txtStatus" FontSize="30" Grid.Row="4"/>
+            <ListView x:Name="LViewTable" ItemsSource="{Binding Table}" Grid.Row="1" Grid.Column="1" Height="520"
+         SelectionMode="Single" SelectionChanged="LViewTable_SelectionChanged">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="7" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="5"  Width="200" Height="100"  Background="Wheat" HorizontalAlignment="Left">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="стул.png" Width="50" Height="50" Grid.RowSpan="2" Margin="5"/>
+                            <TextBlock Text="{Binding Name}" Grid.Column="1" Grid.Row="0" Margin="5" FontSize="20"/>
+                            <TextBlock Text="{Binding Type.Name}" Grid.Column="1" Grid.Row="1" Margin="5" FontSize="20"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackPanel>
 
     </Grid>
