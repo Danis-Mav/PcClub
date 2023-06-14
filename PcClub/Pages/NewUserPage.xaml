@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:PcClub.Pages"
+      xmlns:local="clr-namespace:PcClub.Pages" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="NewUserPage">
@@ -25,14 +25,11 @@
             <Label Grid.Row="2" Content="Номер телефона" FontSize="20" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                 <Label Grid.Row="2" Content="+7" FontSize="20" />
-                <TextBox Grid.Row="3" x:Name="txtNumber" PreviewTextInput="txtInput_NumbersOnly" Width="200" FontSize="20"/>
+                <xctk:MaskedTextBox Grid.Row="3" Background="Transparent" x:Name="txtNumber" Mask="(000)-000-0000" FontSize="20"/>
             </StackPanel>
 
             <Label Grid.Row="4" Content="Email" FontSize="20" />
             <TextBox Grid.Row="5" x:Name="txtEmail" FontSize="20"/>
-
-            <Label Grid.Row="6" Content="Паспортные данные" FontSize="20" />
-            <TextBox Grid.Row="7" x:Name="txtPassportData" FontSize="20" PreviewTextInput="txtInput_NumbersOnly"/>
         </StackPanel>
 
 

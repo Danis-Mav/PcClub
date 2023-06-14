@@ -33,7 +33,6 @@ namespace PcClub.Pages
                 FullName = txtFullName.Text,
                 PhoneNumber = txtNumber.Text,
                 Email = txtEmail.Text,
-                Passport = txtPassportData.Text
             };
 
             // Добавление нового пользователя в базу данных
@@ -44,7 +43,6 @@ namespace PcClub.Pages
             txtFullName.Text = string.Empty;
             txtNumber.Text = string.Empty;
             txtEmail.Text = string.Empty;
-            txtPassportData.Text = string.Empty;
 
             MessageBox.Show("Пользователь успешно добавлен.");
 

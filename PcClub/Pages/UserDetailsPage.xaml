@@ -24,8 +24,6 @@
             <TextBlock FontSize="20" Text="Номер телефона:" FontWeight="Bold" />
             <TextBlock FontSize="20" x:Name="lblPhoneNumber" Margin="0,5,0,10" />
 
-            <TextBlock FontSize="20" Text="Паспортные данные:" FontWeight="Bold" />
-            <TextBlock FontSize="20" x:Name="lblPassport" Margin="0,5,0,10" />
         </StackPanel>
 
         <ListView Grid.Row="1" x:Name="lvBookingHistory" Margin="10" >

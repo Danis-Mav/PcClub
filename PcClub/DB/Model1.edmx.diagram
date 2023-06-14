@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f791935857444af5b4da62bc56ae5aa6" Name="Diagram1">
+      <Diagram DiagramId="05bf7a6172544549bf46b12883e8a981" Name="Diagram1">
         <EntityTypeShape EntityType="PcClubModel.Booking" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PcClubModel.Event" Width="1.5" PointX="3.75" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PcClubModel.EventUser" Width="1.5" PointX="6" PointY="2.875" IsExpanded="true" />
         <EntityTypeShape EntityType="PcClubModel.Place" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PcClubModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PcClubModel.Type" Width="1.5" PointX="1.5" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="PcClubModel.User" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PcClubModel.User" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
         <AssociationConnector Association="PcClubModel.FK_Booking_Place1" ManuallyRouted="false" />
         <AssociationConnector Association="PcClubModel.FK_Booking_User" ManuallyRouted="false" />
         <AssociationConnector Association="PcClubModel.FK_EventUser_Event" ManuallyRouted="false" />

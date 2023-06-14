@@ -22,7 +22,6 @@ namespace PcClub.Pages
     /// </summary>
     public partial class BookingPage : Page
     {
-        private List<User> users;
         private Place selectedPlace;
         private User selectedUser;
         private DateTime bookingEndTime;

@@ -34,7 +34,6 @@ namespace PcClub.Pages
             lblFullName.Text = selectedUser.FullName;
             lblEmail.Text = selectedUser.Email;
             lblPhoneNumber.Text = selectedUser.PhoneNumber;
-            lblPassport.Text = selectedUser.Passport;
         }
 
         private void DisplayBookingHistory()
