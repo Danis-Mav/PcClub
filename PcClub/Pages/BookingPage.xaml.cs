@@ -64,14 +64,14 @@ namespace PcClub.Pages
                 return;
             }
 
-            if (!double.TryParse(txtHours.Text, out double hours) || hours <= 0)
+            if (!double.TryParse(txtHours.Text, out double hours) || hours <= 0 || hours > 24)
             {
                 MessageBox.Show("Введите допустимое количество часов.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
             DateTime startDate = DateTime.Now;
-            DateTime endDate = startDate.AddMinutes(hours);
+            DateTime endDate = startDate.AddHours(hours);
             bookingEndTime = endDate;
 
             using (var db = new PcClubEntities())
@@ -84,13 +84,24 @@ namespace PcClub.Pages
                     MessageBox.Show("Выбранное место уже забронировано на указанный период времени.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
+                double hour;
+                bool isValid = double.TryParse(txtHours.Text, out hour);
+                if (isValid)
+                {
 
+                }
+                else
+                {
+                    MessageBox.Show("Введите допустимое количество часов.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
                 Booking newBooking = new Booking
                 {
                     DateTimeStart = startDate,
                     DateTimeEnd = endDate,
                     IdPlace = selectedPlace.Id,
-                    IdUser = selectedUser.Id
+                    IdUser = selectedUser.Id,
+                    Hour = hour,
                 };
                 selectedPlace.IsBooking = true; 
                 db.Booking.Add(newBooking);
@@ -120,6 +131,11 @@ namespace PcClub.Pages
             {
                 MessageBox.Show($"Booking for place '{selectedPlace.Name}' and user '{selectedUser.Email}' has ended.", "Booking Ended", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new BookedPage());
         }
     }
 }

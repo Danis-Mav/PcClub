@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PcClub.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="500" d:DesignWidth="800"
       Title="BookingPage">
 
     <Grid>
@@ -17,8 +17,9 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-
-        <StackPanel Grid.Row="0">
+        <StackPanel Orientation="Vertical">
+            <Button Content="Забронированные места"  Margin="20" FontSize="20" Click="Button_Click" />
+            <StackPanel Grid.Row="0">
             <TextBlock Text="Выберите место:" FontSize="40"/>
             <ComboBox x:Name="cmbPlace" FontSize="40" SelectionChanged="cmbPlace_SelectionChanged"/>
         </StackPanel>
@@ -36,6 +37,7 @@
         <Button x:Name="btnBook" Margin="20" FontSize="20" Content="Забронировать" Click="btnBook_Click" Grid.Row="3"/>
 
         <TextBlock x:Name="txtStatus" FontSize="30" Grid.Row="4"/>
+        </StackPanel>
 
     </Grid>
 </Page>
