@@ -11,41 +11,41 @@
     <Grid>
         <StackPanel>
         <Button Content="Назад" Margin="20" HorizontalAlignment="Left" Click="Button_Click"/>
-        <ListView ItemsSource="{Binding BookedPlaces}" Margin="10">
-            <ListView.View>
-                <GridView>
-                        <GridViewColumn Header="Название места" DisplayMemberBinding="{Binding Place.Name}" Width="200">
-                            <GridViewColumn.CellTemplate>
+            <ListView ItemsSource="{Binding BookedPlaces}" Margin="10">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Номер места" Width="200">
+                            <GridViewColumn.CellTemplate >
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Place.Name}" FontSize="18" />
+                                    <TextBlock Text="{Binding Place.Name}" TextAlignment="Center"  FontSize="20" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Тип места" DisplayMemberBinding="{Binding Place.Type.Name}" Width="150">
+                        <GridViewColumn Header="Тип места" Width="150">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Place.Type.Name}" FontSize="18" />
+                                    <TextBlock Text="{Binding Place.Type.Name}" FontSize="20" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Пользователь" DisplayMemberBinding="{Binding User.FullName}" Width="200">
+                        <GridViewColumn Header="Пользователь" Width="300">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding User.FullName}" FontSize="18" />
+                                    <TextBlock Text="{Binding User.FullName}" FontSize="20" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Дата и время начала" DisplayMemberBinding="{Binding DateTimeStart}" Width="200">
+                        <GridViewColumn Header="Дата и время начала" Width="300">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding DateTimeStart}" FontSize="18" />
+                                    <TextBlock Text="{Binding DateTimeStart}" FontSize="20" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Дата и время окончания" DisplayMemberBinding="{Binding DateTimeEnd}" Width="200">
+                        <GridViewColumn Header="Дата и время окончания"  Width="300">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding DateTimeEnd}" FontSize="18" />
+                                    <TextBlock Text="{Binding DateTimeEnd}" FontSize="20" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>   
