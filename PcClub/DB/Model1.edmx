@@ -98,7 +98,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_EventUser_Event">
+        <Association Name="FK_EventUser_Event1">
           <End Role="Event" Type="Self.Event" Multiplicity="0..1" />
           <End Role="EventUser" Type="Self.EventUser" Multiplicity="*" />
           <ReferentialConstraint>
@@ -150,7 +150,7 @@
             <End Role="User" EntitySet="User" />
             <End Role="Booking" EntitySet="Booking" />
           </AssociationSet>
-          <AssociationSet Name="FK_EventUser_Event" Association="Self.FK_EventUser_Event">
+          <AssociationSet Name="FK_EventUser_Event1" Association="Self.FK_EventUser_Event1">
             <End Role="Event" EntitySet="Event" />
             <End Role="EventUser" EntitySet="EventUser" />
           </AssociationSet>
@@ -192,7 +192,7 @@
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="MaxUser" Type="Int32" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="EventUser" Relationship="Self.FK_EventUser_Event" FromRole="Event" ToRole="EventUser" />
+          <NavigationProperty Name="EventUser" Relationship="Self.FK_EventUser_Event1" FromRole="Event" ToRole="EventUser" />
         </EntityType>
         <EntityType Name="EventUser">
           <Key>
@@ -201,7 +201,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdUser" Type="Int32" />
           <Property Name="IdEvent" Type="Int32" />
-          <NavigationProperty Name="Event" Relationship="Self.FK_EventUser_Event" FromRole="EventUser" ToRole="Event" />
+          <NavigationProperty Name="Event" Relationship="Self.FK_EventUser_Event1" FromRole="EventUser" ToRole="Event" />
           <NavigationProperty Name="User" Relationship="Self.FK_EventUser_User" FromRole="EventUser" ToRole="User" />
         </EntityType>
         <EntityType Name="Place">
@@ -271,7 +271,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_EventUser_Event">
+        <Association Name="FK_EventUser_Event1">
           <End Role="Event" Type="Self.Event" Multiplicity="0..1" />
           <End Role="EventUser" Type="Self.EventUser" Multiplicity="*" />
           <ReferentialConstraint>
@@ -323,7 +323,7 @@
             <End Role="User" EntitySet="User" />
             <End Role="Booking" EntitySet="Booking" />
           </AssociationSet>
-          <AssociationSet Name="FK_EventUser_Event" Association="Self.FK_EventUser_Event">
+          <AssociationSet Name="FK_EventUser_Event1" Association="Self.FK_EventUser_Event1">
             <End Role="Event" EntitySet="Event" />
             <End Role="EventUser" EntitySet="EventUser" />
           </AssociationSet>

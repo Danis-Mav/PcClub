@@ -12,9 +12,27 @@
         <ListView x:Name="lvPlaces" SelectionChanged="lvPlaces_SelectionChanged"  ItemsSource="{Binding places}" Margin="10" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Номер места" DisplayMemberBinding="{Binding Name}" Width="150"/>
-                    <GridViewColumn Header="Тип" DisplayMemberBinding="{Binding Type.Name}" Width="150"/>
-                    <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Type.Price}" Width="100"/>
+                    <GridViewColumn Header="Номер места"     Width="400">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" FontSize="30" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Тип"     Width="400">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Type.Name}" FontSize="30" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Цена"     Width="400">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Type.Price}" FontSize="30" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

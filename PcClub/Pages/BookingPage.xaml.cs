@@ -93,7 +93,7 @@ namespace PcClub.Pages
             }
 
             DateTime startDate = DateTime.Now;
-            DateTime endDate = startDate.AddHours(hours);
+            DateTime endDate = startDate.AddSeconds(hours);
             bookingEndTime = endDate;
 
             using (var db = new PcClubEntities())
@@ -137,22 +137,20 @@ namespace PcClub.Pages
 
         private void cmbPlace_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            LViewTable.SelectedItem = selectedPlace;
             selectedPlace = cmbPlace.SelectedItem as Place;
             CheckBookingStatus();
 
             // Выбор соответствующего элемента в ListView
-            
+            LViewTable.SelectedItem = selectedPlace;
         }
 
         private void LViewTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedPlace = LViewTable.SelectedItem as Place;
-            cmbPlace.SelectedItem = selectedPlace;
             CheckBookingStatus();
 
             // Выбор соответствующего элемента в ComboBox
-            
+            cmbPlace.SelectedItem = selectedPlace;
         }
 
         private void cmbUser_SelectionChanged(object sender, SelectionChangedEventArgs e)

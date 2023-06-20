@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="05bf7a6172544549bf46b12883e8a981" Name="Diagram1">
+      <Diagram DiagramId="5615f53dce954dcf87dfd28ddf0ce00d" Name="Diagram1">
         <EntityTypeShape EntityType="PcClubModel.Booking" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PcClubModel.Event" Width="1.5" PointX="3.75" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PcClubModel.EventUser" Width="1.5" PointX="6" PointY="2.875" IsExpanded="true" />
@@ -14,7 +14,7 @@
         <EntityTypeShape EntityType="PcClubModel.User" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
         <AssociationConnector Association="PcClubModel.FK_Booking_Place1" ManuallyRouted="false" />
         <AssociationConnector Association="PcClubModel.FK_Booking_User" ManuallyRouted="false" />
-        <AssociationConnector Association="PcClubModel.FK_EventUser_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="PcClubModel.FK_EventUser_Event1" ManuallyRouted="false" />
         <AssociationConnector Association="PcClubModel.FK_EventUser_User" ManuallyRouted="false" />
         <AssociationConnector Association="PcClubModel.FK_Place_Type1" ManuallyRouted="false" />
       </Diagram>

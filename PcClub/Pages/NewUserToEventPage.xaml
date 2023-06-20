@@ -16,11 +16,11 @@
         <StackPanel>
         <StackPanel>
             <!-- Заголовок страницы -->
-            <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold" Margin="0,20">Add Users to Event</TextBlock>
+            <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="40" FontWeight="Bold" Margin="0,20">Добавление пользователя </TextBlock>
 
             <!-- Поля для ввода данных -->
-                <Label Content="Выбор пользователя:" FontSize="20" />
-                <ComboBox x:Name="cmbUsers" Margin="10" FontSize="20" />
+                <Label Content="Выбор пользователя:" FontSize="30" />
+                <ComboBox x:Name="cmbUsers" Margin="10" FontSize="30"/>
         </StackPanel>
         
 
@@ -30,7 +30,7 @@
                 <Button Content="Удалить пользователя"  Margin="10" Click="RemoveUser_Click" FontSize="20"/>
         </StackPanel>
         <StackPanel Margin="10">
-                <ListBox x:Name="lstEventUsers" FontSize="20" />
+                <ListBox x:Name="lstEventUsers" FontSize="30" />
         </StackPanel>
         </StackPanel>
 
