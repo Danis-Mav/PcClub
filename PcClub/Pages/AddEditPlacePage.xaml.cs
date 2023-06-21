@@ -56,8 +56,14 @@ namespace PcClub.Pages
         {
             string name = txtName.Text;
             int typeId = (int)cmbType.SelectedValue;
+            bool isPlaceExists = DBConnection.connection.Place.Any(p => p.Name == name);
             if (selectedPlace == null)
             {
+                if (isPlaceExists)
+                {
+                    MessageBox.Show("Стол с таким номером уже существует.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
                 // Добавление нового элемента в Place
                 Place newPlace = new Place
                 {

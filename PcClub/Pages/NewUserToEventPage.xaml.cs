@@ -74,10 +74,20 @@ namespace PcClub.Pages
                 User selectedUser = (User)cmbUsers.SelectedItem;
                 if (selectedUser != null)
                 {
+                    
                     using (var db = new PcClubEntities())
                     {
+                        bool isUserAlreadyRegistered = db.EventUser
+                    .Any(u => u.IdEvent == selectedEvent.Id && u.IdUser == selectedUser.Id);
+
+                        if (isUserAlreadyRegistered)
+                        {
+                            MessageBox.Show("Данный пользователь уже участвует в этом событии.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                            return;
+                        }
                         EventUser eventUser = new EventUser
                         {
+
                             IdEvent = selectedEvent.Id,
                             IdUser = selectedUser.Id
                         };

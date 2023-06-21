@@ -25,7 +25,21 @@ namespace PcClub.Pages
     public partial class BookingPage : Page
     {
         private Place selectedPlace;
-       
+        public Place SelectedPlace
+        {
+            get { return selectedPlace; }
+            set
+            {
+                selectedPlace = value;
+                OnPropertyChanged(nameof(SelectedPlace));
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         private User selectedUser;
         private DateTime bookingEndTime;
         public virtual ICollection<Booking> Bookings { get; set; }
@@ -63,6 +77,13 @@ namespace PcClub.Pages
             DataContext = this;
             LViewTable.ItemsSource = Table;
             LViewTable.ItemContainerGenerator.StatusChanged += ItemContainerGenerator_StatusChanged;
+            foreach (var place in Table)
+            {
+                if ((bool)place.IsBooking)
+                {
+                    LViewTable.Background = Brushes.Gray; // установить серый фон для элемента
+                }
+            }
         }
         private void ItemContainerGenerator_StatusChanged(object sender, EventArgs e)
         {
@@ -93,7 +114,7 @@ namespace PcClub.Pages
             }
 
             DateTime startDate = DateTime.Now;
-            DateTime endDate = startDate.AddSeconds(hours);
+            DateTime endDate = startDate.AddHours(hours);
             bookingEndTime = endDate;
 
             using (var db = new PcClubEntities())
@@ -131,40 +152,52 @@ namespace PcClub.Pages
 
                 MessageBox.Show("Бронирование успешно создано.", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
                 LoadData();
-                CheckBookingStatus();
+                ShowTable();
             }
         }
 
         private void cmbPlace_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedPlace = cmbPlace.SelectedItem as Place;
-            CheckBookingStatus();
-
-            // Выбор соответствующего элемента в ListView
-            LViewTable.SelectedItem = selectedPlace;
+            SelectedPlace = selectedPlace;
+            UpdateListViewSelection();
+            ShowTable();
         }
 
         private void LViewTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedPlace = LViewTable.SelectedItem as Place;
-            CheckBookingStatus();
+            SelectedPlace = selectedPlace;
+            UpdateComboBoxSelection();
+            UpdateListViewSelection();
+            ShowTable();
+        }
+        private void UpdateListViewSelection()
+        {
+            LViewTable.UpdateLayout();
+            if (selectedPlace != null)
+            {
+                LViewTable.SelectedItem = selectedPlace;
+                LViewTable.ScrollIntoView(selectedPlace);
+            }
+        }
 
-            // Выбор соответствующего элемента в ComboBox
-            cmbPlace.SelectedItem = selectedPlace;
+        private void UpdateComboBoxSelection()
+        {
+            cmbPlace.UpdateLayout();
+            if (selectedPlace != null)
+            {
+                cmbPlace.SelectedItem = selectedPlace;
+                var comboBoxItem = cmbPlace.ItemContainerGenerator.ContainerFromItem(selectedPlace) as FrameworkElement;
+                comboBoxItem?.BringIntoView();
+            }
+            ShowTable();
         }
 
         private void cmbUser_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedUser = cmbUser.SelectedItem as User;
-            CheckBookingStatus();
-        }
-
-        private void CheckBookingStatus()
-        {
-            if (selectedPlace != null && selectedUser != null && bookingEndTime != default && DateTime.Now >= bookingEndTime)
-            {
-                MessageBox.Show($"Booking for place '{selectedPlace.Name}' and user '{selectedUser.Email}' has ended.", "Booking Ended", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+            ShowTable();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

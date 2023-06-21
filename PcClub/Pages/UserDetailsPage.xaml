@@ -29,7 +29,7 @@
         <ListView Grid.Row="1" x:Name="lvBookingHistory" Margin="10" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Место" Width="100" DisplayMemberBinding="{Binding Place.Name}" />
+                    <GridViewColumn Header="Место" Width="120" DisplayMemberBinding="{Binding Place.Name}" />
                     <GridViewColumn Header="Время начала бронирования" Width="200" DisplayMemberBinding="{Binding DateTimeStart}" />
                     <GridViewColumn Header="Конец бронирования" Width="200"  DisplayMemberBinding="{Binding DateTimeEnd}" />
                     <GridViewColumn Header="Часы" DisplayMemberBinding="{Binding Hour}" />

@@ -1,6 +1,7 @@
 ﻿using PcClub.DB;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -88,21 +89,24 @@ namespace PcClub.Pages
             }
         }
 
-        private void SendEmail_Click(object sender, RoutedEventArgs e)
+        private async void SendEmail_Click(object sender, RoutedEventArgs e)
         {
             Event selectedEvent = (Event)lvEvents.SelectedItem;
             if (selectedEvent != null)
             {
                 using (var db = new PcClubEntities())
                 {
-                    List<string> emailList = db.EventUser.Where(u => u.User.Email != null).Select(u => u.User.Email).ToList();
+                    List<string> emailList = await db.EventUser
+                        .Where(u => u.IdEvent == selectedEvent.Id && u.User.Email != null)
+                        .Select(u => u.User.Email)
+                        .ToListAsync();
 
                     string fromMail = "pcclubclient@gmail.com";
                     string fromPassword = "kfkwqtfqarsifyjw";
                     string subject = selectedEvent.Name;
                     foreach (string email in emailList)
                     {
-                        User user = db.User.FirstOrDefault(u => u.Email == email);
+                        User user = await db.User.FirstOrDefaultAsync(u => u.Email == email);
                         if (user != null)
                         {
                             string emailBody = $"Привет, {user.FullName}!\n\n";
@@ -115,17 +119,16 @@ namespace PcClub.Pages
                             message.Body = emailBody;
                             message.IsBodyHtml = true;
 
-                            var smtpClient = new SmtpClient("smtp.gmail.com")
+                            using (var smtpClient = new SmtpClient("smtp.gmail.com"))
                             {
-                                Port = 587,
-                                Credentials = new NetworkCredential(fromMail, fromPassword),
-                                EnableSsl = true,
-                            };
+                                smtpClient.Port = 587;
+                                smtpClient.Credentials = new NetworkCredential(fromMail, fromPassword);
+                                smtpClient.EnableSsl = true;
 
-                            smtpClient.Send(message);
+                                await smtpClient.SendMailAsync(message);
+                            }
                         }
                     }
-
                 }
                 MessageBox.Show("Сообщения успешно отправлены.", "Отправка сообщений", MessageBoxButton.OK, MessageBoxImage.Information);
             }
@@ -135,6 +138,7 @@ namespace PcClub.Pages
                 return;
             }
         }
+
 
     }
 }
