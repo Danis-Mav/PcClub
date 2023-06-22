@@ -21,11 +21,11 @@
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Место:" FontSize="30" Grid.Row="1" Grid.Column="0" Margin="10"/>
-        <TextBox x:Name="txtName"   Grid.Row="1" FontSize="40" Grid.Column="1" Margin="10"/>
-        <Label Content="Тип места:" FontSize="30" Grid.Row="2" Grid.Column="0" Margin="10"/>
+        <Label Content="Место:" FontSize="30" Grid.Row="1" Grid.Column="0" Margin="50,100"/>
+        <TextBox x:Name="txtName"   Grid.Row="1" FontSize="40" Grid.Column="1" Margin="10,100"/>
+        <Label Content="Тип места:" FontSize="30" Grid.Row="2" Grid.Column="0" Margin="10,100"/>
         <ComboBox x:Name="cmbType" Grid.Row="2" Grid.Column="1" Margin="10" FontSize="40"/>
-        <Button x:Name="btnSave" Content="Сохранить" Grid.Row="4"  Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="10"  Height="50" Width="200" Click="btnSave_Click"/>
-        <Button  x:Name="btnCancel" Content="Назад" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10" Height="50" Width="200" Click="btnCancel_Click"/>
+        <Button x:Name="btnSave" Content="Сохранить" Grid.Row="4"  Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="100"  Height="50" Width="200" Click="btnSave_Click"/>
+        <Button  x:Name="btnCancel" Content="Назад" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="100" Height="50" Width="200" Click="btnCancel_Click"/>
     </Grid>
 </Page>

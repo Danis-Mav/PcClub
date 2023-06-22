@@ -6,40 +6,49 @@
       xmlns:local="clr-namespace:PcClub.Pages"
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       mc:Ignorable="d"
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="800" d:DesignWidth="800"
       Title="StatisticsPage">
-
+    
     <Grid>
-        <StackPanel Orientation="Vertical">
-            <StackPanel Orientation="Horizontal">
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+
+            <StackPanel Margin="100,20" >
                 <StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Start Date:" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                        <DatePicker SelectedDate="{Binding SelectedStartDate}" Width="120"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="End Date:" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                        <DatePicker SelectedDate="{Binding SelectedEndDate}" Width="120"/>
-                    </StackPanel>
-                    <lvc:PieChart x:Name="PlaceTypesChart" Grid.Row="1"
-                                  Width="400" Height="400"
+                    <TextBlock FontSize="30" Text="Количества и типы выбранных мест" Margin="20"/>
+                </StackPanel>
+                <lvc:PieChart x:Name="PlaceTypesChart"
+                                  Width="600" Height="600"
                                   Series="{Binding PlaceTypes}"
                                   LegendLocation="Bottom"/>
-                </StackPanel>
-                <StackPanel Width="400">
-                    <lvc:CartesianChart x:Name="EventVisitsChart" Content="События" LegendLocation="Bottom">
-                        <lvc:CartesianChart.Series>
-                            <lvc:ColumnSeries Title="Посещения" Values="{Binding EventVisits}" DataLabels="True"/>
-                        </lvc:CartesianChart.Series>
-                        <lvc:CartesianChart.AxisX>
-                            <lvc:Axis Title="События"/>
-                        </lvc:CartesianChart.AxisX>
-                        <lvc:CartesianChart.AxisY>
-                            <lvc:Axis Title="Количество пользователей"/>
-                        </lvc:CartesianChart.AxisY>
-                    </lvc:CartesianChart>
+            </StackPanel>
+            <StackPanel Margin="100,20">
+                <StackPanel >
+                    <StackPanel>
+                        <TextBlock FontSize="30" Margin="20" Text="Количество людей на событиях"/>
+                    </StackPanel>
+                    <lvc:PieChart x:Name="EventVisitsChart"
+                                  Width="600" Height="600"
+                                  Series="{Binding EventVisits}"
+                                  LegendLocation="Bottom"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
+
+        <StackPanel VerticalAlignment="Bottom" Margin="50">
+            <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+                <TextBlock FontSize="25" Text="С:  " VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <DatePicker FontSize="25" SelectedDate="{Binding SelectedStartDate}" Width="150"/>
+            </StackPanel >
+            <StackPanel HorizontalAlignment="Center"     Orientation="Horizontal" Margin="10">
+                <TextBlock FontSize="25" Text="По:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <DatePicker  FontSize="25" SelectedDate="{Binding SelectedEndDate}" Width="150"/>
+            </StackPanel>
+            <StackPanel Margin="10">
+                <Button x:Name="btnExport" FontSize="25" Height="50" Content="Экспортировать в Exel" Click="btnExport_Click">
+                </Button>
+            </StackPanel>
+        </StackPanel>
+       
     </Grid>
 </Page>

@@ -51,8 +51,6 @@ namespace PcClub.Pages
             InitializeComponent();
             LoadData();
             ShowTable();
-            cmbPlace.SelectionChanged += cmbPlace_SelectionChanged;
-            LViewTable.SelectionChanged += LViewTable_SelectionChanged;
         }
 
         private void LoadData()
@@ -64,7 +62,7 @@ namespace PcClub.Pages
                 cmbUser.DisplayMemberPath = "FullName";
                 cmbUser.SelectedValuePath = "Id";
 
-                var places = db.Place.Where(p => p.IsBooking != true).ToList();
+                var places = db.Place.Where(p => p.IsBooking != true && p.IsDeleted != true).ToList();
                 cmbPlace.ItemsSource = places;
                 cmbPlace.DisplayMemberPath = "Name";
                 cmbPlace.SelectedValuePath = "Id";
@@ -73,7 +71,7 @@ namespace PcClub.Pages
         private void ShowTable()
         {
 
-            Table = new ObservableCollection<Place>(DBConnection.connection.Place.Where(x => x.IsDeleted != true).ToList());
+            Table = new ObservableCollection<Place>(DBConnection.connection.Place.Where(x => x.IsBooking != true && x.IsDeleted != true).ToList());
             DataContext = this;
             LViewTable.ItemsSource = Table;
             LViewTable.ItemContainerGenerator.StatusChanged += ItemContainerGenerator_StatusChanged;

@@ -41,6 +41,11 @@ namespace PcClub.Pages
             var bookings = DBConnection.connection.Booking.Where(b => b.IdUser == selectedUser.Id);
             lvBookingHistory.ItemsSource = bookings.ToList();
         }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }
     

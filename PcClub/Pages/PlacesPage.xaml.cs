@@ -42,6 +42,8 @@ namespace PcClub.Pages
             using (var db = new PcClubEntities())
             {
                 places = new ObservableCollection<Place>(DBConnection.connection.Place.Where(p => p.IsDeleted != true).ToList());
+                lvPlaces.ItemsSource = places;
+                lvPlaces.Items.Refresh();
                 this.DataContext = this;
             }
         }

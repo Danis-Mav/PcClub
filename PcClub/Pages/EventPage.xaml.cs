@@ -78,7 +78,6 @@ namespace PcClub.Pages
                             LoadEvents();
                             // Вывести сообщение об успешном удалении
                             MessageBox.Show("Событие успешно удалено.", "Удаление события", MessageBoxButton.OK, MessageBoxImage.Information);
-                            
                         }
                     }
                 }

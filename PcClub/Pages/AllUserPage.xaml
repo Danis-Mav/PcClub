@@ -16,13 +16,14 @@
         </Grid.RowDefinitions>
 
 
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal" Margin="20">
             <Label Content="Поиск по Email или ФИО" FontSize="40"/>
-            <TextBox x:Name="txtSearch" Margin="5" Width="300" FontSize="20"/>
-            <Button Content="Добавить нового пользователя" Click="btnAddUser_Click" FontSize="15"  />
+            <TextBox x:Name="txtSearch" Margin="5" Width="300" FontSize="30"/>
+            
         </StackPanel>
+        <Button HorizontalAlignment="Right" Content="Добавить нового пользователя" Click="btnAddUser_Click" FontSize="20"  Margin="20"/>
 
-        <ListView x:Name="lvUsers" Grid.Row="1" Margin="5" ItemsSource="{Binding Users}" MouseDoubleClick="userListView_MouseDoubleClick">
+        <ListView x:Name="lvUsers" Grid.Row="1" ItemsSource="{Binding Users}" MouseDoubleClick="userListView_MouseDoubleClick" Margin="100,10,100,10">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ФИО" Width="400">
@@ -52,5 +53,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        
     </Grid>
 </Page>

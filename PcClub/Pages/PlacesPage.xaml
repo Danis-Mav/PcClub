@@ -9,7 +9,7 @@
       Title="PlacesPage">
 
     <Grid>
-        <ListView x:Name="lvPlaces" SelectionChanged="lvPlaces_SelectionChanged"  ItemsSource="{Binding places}" Margin="10" >
+        <ListView x:Name="lvPlaces" SelectionChanged="lvPlaces_SelectionChanged"  ItemsSource="{Binding places}" Margin="100,0,100,100" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Номер места"     Width="400">
@@ -36,7 +36,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="10">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10">
             <Button   Height="50" Width="200" Content="Добавить" Click="AddPlace_Click" Margin="0,0,10,0"/>
             <Button  Height="50" Width="200" Content="Редактировать" Click="EditPlace_Click" Margin="0,0,10,0"/>
             <Button  Height="50" Width="200" Content="Удалить" Click="DeletePlace_Click"/>

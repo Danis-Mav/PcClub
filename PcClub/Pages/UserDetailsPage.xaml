@@ -13,28 +13,54 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <StackPanel>
+        <StackPanel Grid.Row="0" Margin="60">
+            <TextBlock FontSize="30" Text="Полное имя:" FontWeight="Bold" />
+            <TextBlock FontSize="30" x:Name="lblFullName" Margin="0,5,0,10" />
 
-        <StackPanel Grid.Row="0" Margin="10">
-            <TextBlock FontSize="20" Text="Полное имя:" FontWeight="Bold" />
-            <TextBlock FontSize="20" x:Name="lblFullName" Margin="0,5,0,10" />
+            <TextBlock FontSize="30" Text="Email:" FontWeight="Bold" />
+            <TextBlock FontSize="30" x:Name="lblEmail" Margin="0,5,0,10" />
 
-            <TextBlock FontSize="20" Text="Email:" FontWeight="Bold" />
-            <TextBlock FontSize="20" x:Name="lblEmail" Margin="0,5,0,10" />
-
-            <TextBlock FontSize="20" Text="Номер телефона:" FontWeight="Bold" />
-            <TextBlock FontSize="20" x:Name="lblPhoneNumber" Margin="0,5,0,10" />
+            <TextBlock FontSize="30" Text="Номер телефона:" FontWeight="Bold" />
+            <TextBlock FontSize="30" x:Name="lblPhoneNumber" Margin="0,5,0,10" />
 
         </StackPanel>
-
-        <ListView Grid.Row="1" x:Name="lvBookingHistory" Margin="10" >
+        
+        <ListView Grid.Row="1" x:Name="lvBookingHistory" Margin="100,20" Height="450" >
             <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Место" Width="120" DisplayMemberBinding="{Binding Place.Name}" />
-                    <GridViewColumn Header="Время начала бронирования" Width="200" DisplayMemberBinding="{Binding DateTimeStart}" />
-                    <GridViewColumn Header="Конец бронирования" Width="200"  DisplayMemberBinding="{Binding DateTimeEnd}" />
-                    <GridViewColumn Header="Часы" DisplayMemberBinding="{Binding Hour}" />
+                <GridView >
+                    <GridViewColumn Header="Место" Width="120">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Place.Name}" FontSize="18" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Время начала бронирования" Width="300">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding DateTimeStart}" FontSize="18" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Конец бронирования" Width="300">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding DateTimeEnd}" FontSize="18" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Header="Часы" Width="200">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Hour}" FontSize="18" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button VerticalAlignment="Bottom" HorizontalAlignment="Left" Click="Back_Click"  Width="100" FontSize="20" Margin="40" Height="40" x:Name="Back" Content="Назад" />
+        </StackPanel>
     </Grid>
 </Page>
