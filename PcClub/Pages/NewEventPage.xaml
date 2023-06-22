@@ -21,22 +21,22 @@
             <!-- Заголовок страницы -->
             
             <StackPanel>
-                <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold" Margin="0,20">Новое событие</TextBlock>
+                <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="40" FontWeight="Bold" Margin="0,20">Новое событие</TextBlock>
             <!-- Поля для ввода данных -->
-            <Label FontSize="20" Content="Наименование:" Grid.Row="1"/>
-            <TextBox FontSize="20" x:Name="txtName" Grid.Row="1" />
+            <Label FontSize="30" Content="Наименование:" Grid.Row="1"/>
+            <TextBox FontSize="30" x:Name="txtName" Grid.Row="1" />
 
-                <Label Content="Описание:" Grid.Row="2"  FontSize="20" />
-                <TextBox x:Name="txtDescription" Grid.Row="2" FontSize="20" />
+                <Label Content="Описание:" Grid.Row="2"  FontSize="30" />
+                <TextBox x:Name="txtDescription" Grid.Row="2" FontSize="30" />
 
-                <Label Content="Дата:" Grid.Row="3" FontSize="20"/>
-                <DatePicker x:Name="dpDate" Grid.Row="3" FontSize="20" />
+                <Label Content="Дата:" Grid.Row="3" FontSize="30"/>
+                <DatePicker x:Name="dpDate" Grid.Row="3" FontSize="30" />
 
-                <Label Content="Max пользователей:" Grid.Row="4" FontSize="20" />
-                <TextBox x:Name="txtMaxUsers" Grid.Row="4" FontSize="20" />
+                <Label Content="Max пользователей:" Grid.Row="4" FontSize="30" />
+                <TextBox x:Name="txtMaxUsers" Grid.Row="4" FontSize="30" />
             </StackPanel>
             <!-- Кнопка сохранения события -->
-            <Button Content="Сохранить" Grid.Row="5" FontSize="20" HorizontalAlignment="Center" Width="100" Margin="10" Click="Save_Click" />
+            <Button Content="Сохранить" Grid.Row="5" FontSize="30" HorizontalAlignment="Center" Margin="10" Click="Save_Click" />
                 
         </Grid>
     </Grid>

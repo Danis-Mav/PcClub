@@ -85,6 +85,7 @@ namespace PcClub.Pages
                             MessageBox.Show("Данный пользователь уже участвует в этом событии.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                             return;
                         }
+
                         EventUser eventUser = new EventUser
                         {
 

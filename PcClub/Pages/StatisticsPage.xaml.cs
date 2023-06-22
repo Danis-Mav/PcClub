@@ -65,6 +65,16 @@ namespace PcClub.Pages
                     .ToList();
 
                 PlaceTypes = new SeriesCollection();
+                var bookingData = context.Booking
+    .Where(b => b.DateTimeStart >= selectedStartDate && b.DateTimeEnd <= selectedEndDate)
+    .Select(b => new
+    {
+        PlaceName = b.Place.Name,
+        DateTimeStart = b.DateTimeStart,
+        DateTimeEnd = b.DateTimeEnd,
+        UserName = b.User.FullName
+    })
+    .ToList();
 
                 foreach (var data in placeTypeData)
                 {
@@ -76,6 +86,7 @@ namespace PcClub.Pages
                     });
                 }
                 OnPropertyChanged(nameof(PlaceTypes));
+
             }
             using (var db = new PcClubEntities())
             {
@@ -103,39 +114,109 @@ namespace PcClub.Pages
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private void btnExport_Click(object sender, RoutedEventArgs e)
+        private void btnTPExport_Click(object sender, RoutedEventArgs e)
         {
-            //if (PlaceTypes != null && PlaceTypes.Any())
-            //{
-            //    var wb = new XLWorkbook();
+            if (PlaceTypes != null && PlaceTypes.Any())
+            {
 
-            //    foreach (var data in PlaceTypes)
-            //    {
-            //        var ws = wb.Worksheets.Add(data.TypeName);
+                XLWorkbook wb = new XLWorkbook();
 
-            //        ws.Cell("A1").Value = "Type Name";
-            //        ws.Cell("B1").Value = "Count";
+                var ws = wb.Worksheets.Add("PlaceTypes");
 
-            //        int row = 2;
-            //        foreach (var value in data.Values)
-            //        {
-            //            ws.Cell(row, 1).Value = data.Title.ToString();
-            //            ws.Cell(row, 2).Value = value.ToString();
-            //            row++;
-            //        }
-            //    }
+                ws.Cell("A1").Value = "Дата с:";
+                ws.Cell("B1").Value = selectedStartDate?.ToString("dd.MM.yyyy");
+                ws.Cell("A2").Value = "по:";
+                ws.Cell("B2").Value = selectedEndDate?.ToString("dd.MM.yyyy");
 
+                // Заголовки данных PlaceTypes
+                ws.Cell("A4").Value = "Тип места";
+                ws.Cell("B4").Value = "Количество";
 
-            //    string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            //    string filePath = Path.Combine(desktopPath, "place_types.xlsx");
-            //    wb.SaveAs(filePath);
+                int placeTypesRow = 5;
+                foreach (var data in PlaceTypes)
+                {
+                    ws.Cell(placeTypesRow, 1).Value = data.Title.ToString();
+                    ws.Cell(placeTypesRow, 2).Value = data.Values[0]?.ToString();
+                    placeTypesRow++;
+                }
 
-            //    MessageBox.Show("Данные успешно экспортированы в файл place_types.xlsx");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Нет данных для экспорта");
-            //}
+                using (var context = new PcClubEntities())
+                {
+                    var bookingData = context.Booking
+                    .Where(b => b.DateTimeStart >= selectedStartDate && b.DateTimeEnd <= selectedEndDate)
+                    .Select(b => new
+                    {
+                        PlaceName = b.Place.Name,
+                        DateTimeStart = b.DateTimeStart,
+                        DateTimeEnd = b.DateTimeEnd,
+                        UserName = b.User.FullName
+                    })
+                    .ToList();
+                
+                if (bookingData != null && bookingData.Any())
+                {
+                    var wsBooking = wb.Worksheets.Add("Booking");
+
+                        // Заголовки данных Booking
+                        wsBooking.Cell("A1").Value = "Место";
+                        wsBooking.Cell("B1").Value = "Дата и время начала";
+                        wsBooking.Cell("C1").Value = "Дата и время окончания";
+                        wsBooking.Cell("D1").Value = "Пользователь";
+
+                    int bookingRow = 2;
+                    foreach (var booking in bookingData)
+                    {
+                        wsBooking.Cell(bookingRow, 1).Value = booking.PlaceName;
+                        wsBooking.Cell(bookingRow, 2).Value = booking.DateTimeStart?.ToString("dd.MM.yyyy HH:mm");
+                        wsBooking.Cell(bookingRow, 3).Value = booking.DateTimeEnd?.ToString("dd.MM.yyyy HH:mm");
+                        wsBooking.Cell(bookingRow, 4).Value = booking.UserName;
+                        bookingRow++;
+                    }
+                    }
+                }
+
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string filePath = Path.Combine(desktopPath, "place_types_and_booking.xlsx");
+
+                wb.SaveAs(filePath);
+
+                MessageBox.Show("Экспорт успешно выполнен.");
+            }
+            else
+            {
+                MessageBox.Show("Нет данных для экспорта.");
+            }
         }
+
+        private void btnEUExport_Click(object sender, RoutedEventArgs e)
+        {
+            if (EventVisits != null && EventVisits.Any())
+            {
+                var wb = new XLWorkbook();
+                var ws = wb.Worksheets.Add("Event Visits");
+
+                ws.Cell("A1").Value = "Название события";
+                ws.Cell("B1").Value = "Количество учавствующих пользователей";
+
+                int row = 5;
+                foreach (var data in EventVisits)
+                {
+                    ws.Cell(row, 1).Value = data.Title.ToString();
+                    ws.Cell(row, 2).Value = data.Values[0]?.ToString();
+                    row++;
+                }
+                
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string filePath = Path.Combine(desktopPath, "event_visits.xlsx");
+                wb.SaveAs(filePath);
+
+                MessageBox.Show("Данные успешно экспортированы в файл event_visits.xlsx");
+            }
+            else
+            {
+                MessageBox.Show("Нет данных для экспорта");
+            }
+        }
+
     }
 }

@@ -44,9 +44,9 @@
                 <TextBlock FontSize="25" Text="По:" VerticalAlignment="Center" Margin="0,0,5,0"/>
                 <DatePicker  FontSize="25" SelectedDate="{Binding SelectedEndDate}" Width="150"/>
             </StackPanel>
-            <StackPanel Margin="10">
-                <Button x:Name="btnExport" FontSize="25" Height="50" Content="Экспортировать в Exel" Click="btnExport_Click">
-                </Button>
+            <StackPanel Margin="10" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="btnTPExport" FontSize="25" Margin="50" Height="50" Content="Экспортировать в Exel" Click="btnTPExport_Click"/>
+                <Button x:Name="btnEUExport" FontSize="25"  Height="50" Content="Экспортировать в Exel" Click="btnEUExport_Click"/>
             </StackPanel>
         </StackPanel>
        
