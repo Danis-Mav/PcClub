@@ -35,13 +35,16 @@ namespace PcClub.Pages
         }
         private void LoadEventUsers()
         {
-            using (var db = new PcClubEntities())
+            if (selectedEvent != null)
             {
-                var eventUsers = db.EventUser
-                    .Where(u => u.IdEvent == selectedEvent.Id)
-                    .Select(u => u.User.FullName)
-                    .ToList();
-                lstEventUsers.ItemsSource = eventUsers;
+                using (var db = new PcClubEntities())
+                {
+                    var eventUsers = db.EventUser
+                        .Where(u => u.IdEvent == selectedEvent.Id)
+                        .Select(u => u.User.FullName)
+                        .ToList();
+                    lstEventUsers.ItemsSource = eventUsers;
+                }
             }
         }
         private void LoadUsers()
@@ -49,16 +52,18 @@ namespace PcClub.Pages
             using (var db = new PcClubEntities())
             {
                 users = db.User.ToList();
-                cmbUsers.ItemsSource = users;
-                cmbUsers.DisplayMemberPath = "FullName";
-                cmbUsers.SelectedValuePath = "Id";
-                cmbUsers.Items.Refresh();
+                if (users != null)
+                {
+                    cmbUsers.ItemsSource = users;
+                    cmbUsers.DisplayMemberPath = "FullName";
+                    cmbUsers.SelectedValuePath = "Id";
+                    cmbUsers.Items.Refresh();
+                }
             }
         }
 
         private void LoadEvent()
         {
-            // Получить выбранное событие (например, с помощью параметра)
             selectedEvent = GetSelectedEvent();
         }
 

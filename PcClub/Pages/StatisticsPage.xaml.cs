@@ -128,7 +128,6 @@ namespace PcClub.Pages
                 ws.Cell("A2").Value = "по:";
                 ws.Cell("B2").Value = selectedEndDate?.ToString("dd.MM.yyyy");
 
-                // Заголовки данных PlaceTypes
                 ws.Cell("A4").Value = "Тип места";
                 ws.Cell("B4").Value = "Количество";
 
@@ -157,7 +156,6 @@ namespace PcClub.Pages
                 {
                     var wsBooking = wb.Worksheets.Add("Booking");
 
-                        // Заголовки данных Booking
                         wsBooking.Cell("A1").Value = "Место";
                         wsBooking.Cell("B1").Value = "Дата и время начала";
                         wsBooking.Cell("C1").Value = "Дата и время окончания";
