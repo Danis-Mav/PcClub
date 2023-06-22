@@ -57,6 +57,11 @@ namespace PcClub.Pages
             string name = txtName.Text;
             int typeId = (int)cmbType.SelectedValue;
             bool isPlaceExists = DBConnection.connection.Place.Any(p => p.Name == name);
+            if (string.IsNullOrEmpty(name))
+            {
+                MessageBox.Show("Пожалуйста, введите номер стола.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             if (selectedPlace == null)
             {
                 if (isPlaceExists)

@@ -40,6 +40,12 @@ namespace PcClub.Pages
                     digitsOnly += c;
                 }
             }
+            string name = txtFullName.Text;
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                MessageBox.Show("Пожалуйста, введите фио.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             if (digitsOnly.Length < 10)
             {
                 MessageBox.Show("Номер телефона должен содержать не менее 10 цифр.");

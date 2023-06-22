@@ -27,10 +27,23 @@ namespace PcClub.Pages
         }
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            
             string name = txtName.Text;
             string description = txtDescription.Text;
             DateTime date = dpDate.SelectedDate ?? DateTime.Now;
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(description) || string.IsNullOrEmpty(txtMaxUsers.Text))
+            {
+                MessageBox.Show("Пожалуйста, заполните все поля.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             int maxUsers = int.Parse(txtMaxUsers.Text);
+            
+
+            if (!int.TryParse(txtMaxUsers.Text, out maxUsers))
+            {
+                MessageBox.Show("Некорректное значение для максимального количества пользователей.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
             using (var db = new PcClubEntities())
             {
